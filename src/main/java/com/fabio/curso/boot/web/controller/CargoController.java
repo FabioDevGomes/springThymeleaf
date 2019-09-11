@@ -69,7 +69,7 @@ public class CargoController {
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
 		if(!cargoService.cargoTemFuncionarios(id)) {
 			cargoService.excluir(id);
-			model.addAttribute("success","Departamento excluído com sucesso.");
+			model.addAttribute("success","Cargo excluído com sucesso.");
 		} else {
 			model.addAttribute("fail","Cargo não removido. Possui funcionario(s) vinculado(s).");
 		}
