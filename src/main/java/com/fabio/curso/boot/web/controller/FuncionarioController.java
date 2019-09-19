@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fabio.curso.boot.domain.Cargo;
@@ -68,6 +69,13 @@ public class FuncionarioController {
 		return listar(model);
 	}
 	
+	@GetMapping("/buscar/nome")
+	public String getProNome(@RequestParam("nome") String nome, ModelMap model) {
+		model.addAttribute("funcionarios", funcionarioService.buscarPorNome(nome));
+		return "/funcionario/lista";
+	}
+
+		
 	//essa anotação já coloca o retorno desse método na variável 'cargos'
 	@ModelAttribute("cargos")
 	public List<Cargo> listaCargos(){
