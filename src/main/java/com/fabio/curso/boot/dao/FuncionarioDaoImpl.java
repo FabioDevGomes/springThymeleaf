@@ -14,10 +14,11 @@ public class FuncionarioDaoImpl extends AbstractDao<Funcionario> implements Func
 
 	@Override
 	public List<Funcionario> findByNome(String nome) {
-		List<Funcionario> query = getEntityManager().createQuery("").getResultList();
+//		List<Funcionario> query = getEntityManager().createQuery("").getResultList();
+		TypedQuery<Funcionario> query = getEntityManager().createQuery("select f from Funcionario f where f.nome like :nome", Funcionario.class);
+		query.setParameter("nome", "%"+nome+"%");
 		
-		// TODO Auto-generated method stub
-		return null;
+		return query.getResultList();
 	}
 
 }
