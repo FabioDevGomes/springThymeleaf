@@ -23,14 +23,14 @@ public class Cargo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "nome", nullable = false, unique = true, length = 60)
+	@Column(nullable = false, unique = true, length = 60)
 	private String nome;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_departamento_fk") //nome da chave estrangeira que teremos na tabela CARGOS
 	private Departamento departamento;
 	
-	//Informa o lado forte (Funcinario) e fraco (Cargo) do relacionamento
+	//Informa o lado forte (Cargo) do relacionamento
 	@OneToMany(mappedBy = "cargo")
 	private List<Funcionario> funcinarios;
 
