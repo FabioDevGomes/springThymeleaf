@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
-public class AbstractDao<T> {
+public class GenericDao<T> {
 
 	@SuppressWarnings("unchecked")
-	private final Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	private final Class<T> entityClass = (Class<T>) ((ParameterizedType) getClass()
+			.getGenericSuperclass()).getActualTypeArguments()[0];
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -36,15 +36,9 @@ public class AbstractDao<T> {
 	}
 	
 	public List<T> findAll(){
-		return entityManager.createQuery("from "+ entityClass.getSimpleName(), entityClass).getResultList();
+		return entityManager
+				.createQuery("from "+ entityClass.getSimpleName(), entityClass)
+				.getResultList();
 	}
-	
-//	protected List<T> createQuery(String jpql, Object... params){
-//		TypedQuery<T> query = entityManager.createQuery(jpql, entityClass);
-//		for (int i = 0; i < params.length; i++) {
-//			query.setParameter(i+1, params[1]);
-//		}
-//		return query.getResultList();
-//	}
 	
 }

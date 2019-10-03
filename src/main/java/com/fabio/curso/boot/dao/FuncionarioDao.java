@@ -2,7 +2,6 @@ package com.fabio.curso.boot.dao;
 
 import java.util.List;
 
-import com.fabio.curso.boot.domain.Cargo;
 import com.fabio.curso.boot.domain.Funcionario;
 
 public interface FuncionarioDao {
@@ -12,6 +11,6 @@ public interface FuncionarioDao {
 	void delete(Long id);
 	Funcionario findById(Long id);
 	List<Funcionario> findAll();
-	List<Funcionario> findByNome(String nome);
+	List<Funcionario> findByName(String nome);
 
 }

@@ -10,10 +10,10 @@ import com.fabio.curso.boot.domain.Cargo;
 import com.fabio.curso.boot.domain.Funcionario;
 
 @Repository
-public class FuncionarioDaoImpl extends AbstractDao<Funcionario> implements FuncionarioDao {
+public class FuncionarioDaoImpl extends GenericDao<Funcionario> implements FuncionarioDao {
 
 	@Override
-	public List<Funcionario> findByNome(String nome) {
+	public List<Funcionario> findByName(String nome) {
 //		List<Funcionario> query = getEntityManager().createQuery("").getResultList();
 		TypedQuery<Funcionario> query = getEntityManager().createQuery("select f from Funcionario f where f.nome like :nome", Funcionario.class);
 		query.setParameter("nome", "%"+nome+"%");

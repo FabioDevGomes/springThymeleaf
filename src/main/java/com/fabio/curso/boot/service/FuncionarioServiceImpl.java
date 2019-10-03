@@ -46,7 +46,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 	@Override
 	@Transactional(readOnly = true) //não abre uma nova transação
 	public List<Funcionario> buscarPorNome(String nome) {
-		return dao.findByNome(nome);
+		return dao.findByName(nome);
 	}
 
 }

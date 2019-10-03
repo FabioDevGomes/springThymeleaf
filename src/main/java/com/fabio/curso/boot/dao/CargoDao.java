@@ -3,7 +3,6 @@ package com.fabio.curso.boot.dao;
 import java.util.List;
 
 import com.fabio.curso.boot.domain.Cargo;
-import com.fabio.curso.boot.domain.Departamento;
 
 public interface CargoDao {
 
